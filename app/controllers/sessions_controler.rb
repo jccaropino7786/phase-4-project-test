@@ -1,17 +1,17 @@
 class SessionsController < ApplicationController
+    skip_before_action :authorized_user, only:[:login]
     
-    
-    def create
-        @user = User.find_by(email: params[:email])
-        if @user && @user.authenticate(parmas[:email][:password])
-            session[:user_id] = @user.user_id
-            redirect_to user_path(@user)            
+    def login
+        user = User.find_by(email: params[:email])
+        if user && user.authenticate(parmas[:password])
+            session[:user_id] = user.id
+            render json: user, status: :ok            
         else
-            redirect_to new_session
+            render json: {error: "Invalid Credentials"}, status: :unauthorized
         end
     end
 
-    def destroy
+    def logout
         session.delete :user_id
         head :no_content
     end
