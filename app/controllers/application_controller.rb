@@ -1,8 +1,17 @@
 class ApplicationController < ActionController::API
   include ActionController::Cookies
-        
         rescue_from ActiveRecord::RecordNotFound, with: :not_found
         rescue_from ActiveRecord::RecordInvalid, with: :not_valid
+
+        def current_user
+
+        end
+
+        def authorized_user
+
+        end
+
+        private
 
         def not_found(invalid)
             render json: {error: "#{invalid.model} not found"}, status: :not_found
