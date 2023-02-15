@@ -22,7 +22,7 @@ function LogIn({setCurrentUser}){
             email,
             password
         }
-        fetch('http://localhost:3000/login',{
+        fetch('/login',{
             method: "POST",
             headers:{'Content-Type': 'application/json'},
             body:JSON.stringify(user)
@@ -63,7 +63,7 @@ return (
         </Button>
         
       </Form>
-      <Button> <Link to="/auth"> Dont Have an Account? Sign Up </Link></Button>
+      <Button> <Link to="/authorize"> Dont Have an Account? Sign Up </Link></Button>
     </div>
 
   );

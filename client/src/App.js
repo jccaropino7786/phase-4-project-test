@@ -10,7 +10,7 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState('')
 
   useEffect(()=>{
-    fetch('http://localhost:3000/auth')
+    fetch('/auth')
     .then(res => {
       if(res.ok){
         res.json().then(user => setCurrentUser(user))
@@ -25,7 +25,7 @@ const App = () => {
         <div className="App">
           <Routes>
             <Route path="/login" element={ <LogIn setCurrentUser={setCurrentUser} /> }/>
-            <Route path="/auth" element={ <SignUp setCurrentUser={setCurrentUser} /> }/>
+            <Route path="/authorize" element={ <SignUp setCurrentUser={setCurrentUser} /> }/>
             <Route path="/new_project" element={ <ProjectForm/> }/>
           </Routes>
       </div>

@@ -22,7 +22,7 @@ function SignUp({setCurrentUser}){
             email,
             password
         }
-        fetch('http://localhost:3000/auth',{
+        fetch('/auth',{
             method: "POST",
             headers:{'Content-Type': 'application/json'},
             body:JSON.stringify(user)

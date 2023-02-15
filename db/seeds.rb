@@ -5,7 +5,7 @@ Material.destroy_all
 ProjectMaterial.destroy_all
 
 puts "Seeding Users"
-    u1 = User.create(email: 'jc@live.com', password: "1234"  )
+    u1 = User.create(email: 'jc@live.com', password: "12345678"  )
 
 puts "Seeding Projects"
     p1 = Project.create(user_id: u1, summary: "Building House in Mexico")
