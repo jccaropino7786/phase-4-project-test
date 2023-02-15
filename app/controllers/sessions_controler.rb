@@ -3,9 +3,9 @@ class SessionsController < ApplicationController
     
     def login
         user = User.find_by(email: params[:email])
-        if user && user.authenticate(parmas[:password])
+        if user&.authenticate(parmas[:password])
             session[:user_id] = user.id
-            render json: user, status: :ok            
+            render json: user, status: :created            
         else
             render json: {error: "Invalid Credentials"}, status: :unauthorized
         end

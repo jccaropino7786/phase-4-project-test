@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
-    before_action :find_user, only: [:show, :update, :destroy]
+    before_action :find_user, only: [ :update, :destroy]
     skip_before_action :authorized_user, only: [:create]
     
     def show
-        render json: @user, status: :ok
+        current_user = User.find(session[:user_id])
+        render json: current_user
     end
 
     def create
