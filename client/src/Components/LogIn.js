@@ -1,13 +1,14 @@
 import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
-function Auth({setCurrentUser}){
+function LogIn({setCurrentUser}){
 
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [login, setLogin] = useState("")
+    // const [login, setLogin] = useState("")
     const [errors, setErrors] = useState([])
 
     function validateForm() {
@@ -21,7 +22,7 @@ function Auth({setCurrentUser}){
             email,
             password
         }
-        fetch('/login',{
+        fetch('http://localhost:3000/login',{
             method: "POST",
             headers:{'Content-Type': 'application/json'},
             body:JSON.stringify(user)
@@ -36,7 +37,7 @@ function Auth({setCurrentUser}){
 }
 
 return (
-    <div className="Login">
+    <div className="SignUp">
       <Form onSubmit={onSubmit}>
         <Form.Group size="lg" controlId="email">
           <Form.Label>Email</Form.Label>
@@ -58,14 +59,15 @@ return (
           />
         </Form.Group>
         <Button block size="lg" type="submit" disabled={!validateForm()}>
-          Login
+          SignUp
         </Button>
         
       </Form>
+      <Button> <Link to="/auth"> Dont Have an Account? Sign Up </Link></Button>
     </div>
 
   );
 
 }
 
-export default Auth
+export default LogIn

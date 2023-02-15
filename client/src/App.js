@@ -2,14 +2,15 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom'
 import NavBar from './Components/NavBar';
 import ProjectForm from './Components/ProjectForm';
-import Auth from './Components/Auth';
+import SignUp from './Components/SignUp';
+import LogIn from './Components/LogIn';
 import { useEffect, useState } from 'react';
 
-function App() {
+const App = () => {
   const [currentUser, setCurrentUser] = useState('')
 
   useEffect(()=>{
-    fetch('/auth')
+    fetch('http://localhost:3000/auth')
     .then(res => {
       if(res.ok){
         res.json().then(user => setCurrentUser(user))
@@ -17,14 +18,15 @@ function App() {
     })
   },[])
 
-  if(!currentUser) return <Auth setCurrentUser={setCurrentUser} />
+  if(!currentUser) return <LogIn setCurrentUser={setCurrentUser} />
   return (
     <div>
       <NavBar/>
         <div className="App">
           <Routes>
-            <Route path="/auth" element={ <Auth setCurrentUser={setCurrentUser} /> }/>
-            <Route path="new_project" element={ <ProjectForm/> }/>
+            <Route path="/login" element={ <LogIn setCurrentUser={setCurrentUser} /> }/>
+            <Route path="/auth" element={ <SignUp setCurrentUser={setCurrentUser} /> }/>
+            <Route path="/new_project" element={ <ProjectForm/> }/>
           </Routes>
       </div>
     </div>
