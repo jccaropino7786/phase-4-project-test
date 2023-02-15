@@ -38,6 +38,7 @@ function SignUp({setCurrentUser}){
 
 return (
     <div className="SignUp">
+      <h1>Sign Up</h1>
       <Form onSubmit={onSubmit}>
         <Form.Group size="lg" controlId="email">
           <Form.Label>Email</Form.Label>
@@ -63,7 +64,7 @@ return (
         </Button>
         
       </Form>
-      <Button><Link to="/signup"> Already have an account? Sign in</Link></Button>
+      <Button><Link to="/login"> Already have an account? Login</Link></Button>
     </div>
 
   );

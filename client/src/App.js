@@ -25,7 +25,7 @@ const App = () => {
         <div className="App">
           <Routes>
             <Route path="/login" element={ <LogIn setCurrentUser={setCurrentUser} /> }/>
-            <Route path="/authorize" element={ <SignUp setCurrentUser={setCurrentUser} /> }/>
+            <Route path="/signup" element={ <SignUp setCurrentUser={setCurrentUser} /> }/>
             <Route path="/new_project" element={ <ProjectForm/> }/>
           </Routes>
       </div>

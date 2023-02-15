@@ -38,6 +38,7 @@ function LogIn({setCurrentUser}){
 
 return (
     <div className="SignUp">
+      <h1>Login</h1>
       <Form onSubmit={onSubmit}>
         <Form.Group size="lg" controlId="email">
           <Form.Label>Email</Form.Label>
@@ -59,11 +60,11 @@ return (
           />
         </Form.Group>
         <Button block size="lg" type="submit" disabled={!validateForm()}>
-          SignUp
+          Login
         </Button>
         
       </Form>
-      <Button> <Link to="/authorize"> Dont Have an Account? Sign Up </Link></Button>
+      <Button> <Link to="/signup"> Dont Have an Account? Sign Up </Link></Button>
     </div>
 
   );
