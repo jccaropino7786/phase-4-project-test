@@ -18,7 +18,7 @@ const App = () => {
     })
   },[])
 
-  if(!currentUser) return <LogIn setCurrentUser={setCurrentUser} />
+  // if(!currentUser) return <LogIn />
   return (
     <div>
       <NavBar/>

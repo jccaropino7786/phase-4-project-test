@@ -29,9 +29,9 @@ function SignUp({setCurrentUser}){
     })
     .then(res => {
         if(res.ok){
-            res.json().then(setCurrentUser)
+          res.json().then(user => setCurrentUser(user))
         } else{
-            res.json().then( e => setErrors())
+            res.json().then( errors => setErrors(errors))
         }
     })
 }
