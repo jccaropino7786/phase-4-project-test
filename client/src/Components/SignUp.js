@@ -2,9 +2,11 @@ import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function SignUp({setCurrentUser}){
-
+    
+    const navigate = useNavigate();
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -22,7 +24,7 @@ function SignUp({setCurrentUser}){
             email,
             password
         }
-        fetch('/auth',{
+        fetch('/signup',{
             method: "POST",
             headers:{'Content-Type': 'application/json'},
             body:JSON.stringify(user)
@@ -34,6 +36,7 @@ function SignUp({setCurrentUser}){
             res.json().then( errors => setErrors(errors))
         }
     })
+    navigate("/projects")
 }
 
 return (

@@ -2,10 +2,11 @@ import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function LogIn({setCurrentUser}){
 
-
+    const navigate = useNavigate();
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     // const [login, setLogin] = useState("")
@@ -34,6 +35,7 @@ function LogIn({setCurrentUser}){
             res.json().then( errors => setErrors(errors))
         }
     })
+    navigate("/projects")
 }
 
 return (

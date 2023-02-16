@@ -5,6 +5,7 @@ import ProjectForm from './Components/ProjectForm';
 import SignUp from './Components/SignUp';
 import LogIn from './Components/LogIn';
 import { useEffect, useState } from 'react';
+import Projects from './Components/Projects';
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState('')
@@ -17,15 +18,18 @@ const App = () => {
       } 
     })
   },[])
+ 
+
 
   // if(!currentUser) return <LogIn />
   return (
     <div>
-      <NavBar/>
+      <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser}/>
         <div className="App">
           <Routes>
             <Route path="/login" element={ <LogIn setCurrentUser={setCurrentUser} /> }/>
             <Route path="/signup" element={ <SignUp setCurrentUser={setCurrentUser} /> }/>
+            <Route path="/projects" element={ <Projects/> }/>
             <Route path="/new_project" element={ <ProjectForm/> }/>
           </Routes>
       </div>
