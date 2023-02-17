@@ -5,10 +5,12 @@ import Button from "react-bootstrap/Button";
 
 const MatrialsContainer =({materials, setMaterials}) => {
 
-    const [showForm, setShowForm] = useState(true)
+    const [showForm, setShowForm] = useState(false)
+    const [btnTxt, setBtnTxt] = useState(true)
 
     const flipForm = () => {
         setShowForm(currentValue => !currentValue)
+        setBtnTxt(currentValue => !currentValue)
       }
 
     const initialFormValues = {
@@ -51,7 +53,7 @@ const MatrialsContainer =({materials, setMaterials}) => {
             description: formData.description
         };
         console.log(newMaterial)
-        debugger
+
         fetch("/materials", {
             method: 'POST',
             headers: {
@@ -67,39 +69,46 @@ const MatrialsContainer =({materials, setMaterials}) => {
 
     return(
         <div>
-            <h1>New Material Form</h1>
-        <Form onSubmit={handleSubmit}>
-            <Form.Group size="lg" controlId="materialForm">
-            <Form.Label></Form.Label>
-            <Form.Control
-                placeholder="Name..."
-                name="name"
-                type="text"
-                value={formData.name}
-                onChange={handleChange}
-            />
-            <br></br>
-            <Form.Control
-                placeholder="Cost..."
-                name="cost"
-                type="number"
-                value={formData.cost}
-                onChange={handleChange}
-            />
-            <br></br>
-            <Form.Control
-                placeholder="Description..."
-                name="description"
-                type="text"
-                value={formData.description}
-                onChange={handleChange}
-            />
-            </Form.Group>
-            <Button block size="lg" type="submit" disabled={!validateForm()}>
-                Submit
-            </Button>
-        </Form>
-
+            <Button onClick={flipForm} > {btnTxt ? "Add Materials": "Hide Form"}</Button>
+            {showForm ?
+            <>
+                <h1>New Material Form</h1>
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Group size="lg" controlId="materialForm">
+                        <Form.Label></Form.Label>
+                        <Form.Control
+                            placeholder="Name..."
+                            name="name"
+                            type="text"
+                            value={formData.name}
+                            onChange={handleChange}
+                        />
+                        <br></br>
+                        <Form.Control
+                            placeholder="Cost..."
+                            name="cost"
+                            type="number"
+                            value={formData.cost}
+                            onChange={handleChange}
+                        />
+                        <br></br>
+                        <Form.Control
+                            placeholder="Description..."
+                            name="description"
+                            type="text"
+                            value={formData.description}
+                            onChange={handleChange}
+                        />
+                        </Form.Group>
+                        <Button block size="lg" type="submit" disabled={!validateForm()}>
+                            Submit
+                        </Button>
+                    </Form>
+                    </>
+                     : (
+            <></>
+        )
+}
 
 
 
