@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-function LogIn({setCurrentUser}){
+function LogIn({setCurrentUser, setLogin}){
 
     const navigate = useNavigate();
     const [email, setEmail] = useState("")
@@ -67,7 +67,7 @@ return (
         </Button>
         
       </Form>
-      <Button> <Link to="/signup"> Dont Have an Account? Sign Up </Link></Button>
+      <Button onClick={()=>{setLogin(current => !current)}}> Dont Have an Account? Sign Up </Button>
     </div>
 
   );

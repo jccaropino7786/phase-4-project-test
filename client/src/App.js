@@ -45,14 +45,16 @@ const App = () => {
     {fetchData() } 
   },[currentUser])
 
-  const projectList = projects.map((project) => (
+  const filteredProjects =  currentUser ? projects.filter(project => project.user.id === currentUser.id) : [] 
+
+  const projectList = filteredProjects.map((project) => (
     <Projects
     key={project.id}
     projectId={project.id} 
     summary={project.summary}
     projectMaterials={project.project_materials}
     status={project.status}
-    projects={projects} 
+    projects={filteredProjects} 
     setProjects={setProjects}
     ></Projects>
   ))
@@ -84,7 +86,7 @@ const App = () => {
 
 
   if(!currentUser) {
-    return login ? <LogIn setCurrentUser={setCurrentUser} /> :<SignUp setCurrentUser={setCurrentUser} /> 
+    return login ? <LogIn setLogin={setLogin} setCurrentUser={setCurrentUser} /> : <SignUp setLogin={setLogin} setCurrentUser={setCurrentUser} /> 
   }
   return (
     <div>
