@@ -117,7 +117,7 @@ const Projects = ({projects, setProjects, projectId, summary, status, projectMat
               <option value="completed">completed</option>
               <option value="rejected">rejected</option>
             </select>
-        <p class="card-text">{materialsList}</p>
+        
         
         </div>
       </div>
