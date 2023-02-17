@@ -1,4 +1,4 @@
-import Card from "react-bootstrap/Card"
+
 import Button from "react-bootstrap/esm/Button"
 import { useState } from "react"
 import Form from "react-bootstrap/Form";
@@ -10,12 +10,12 @@ const Projects = ({projects, setProjects, projectId, summary, status, projectMat
 
  
  const materialsList = projectMaterials.map(project => [project.id, project.cost])
- console.log(materialsList)
+//  console.log(materialsList)
 
   const handleChange = (e) => {
    
     const newValue = e.target.value
-
+      
     fetch(`/projects/${projectId}`, {
       method: 'PATCH',
       headers: {
@@ -41,10 +41,11 @@ const Projects = ({projects, setProjects, projectId, summary, status, projectMat
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    
     const newProject = {
       summary: summaryInput
       };
-    //  console.log(newProject)
+    
   fetch(`/projects/${projectId}`, {
     method: 'PATCH',
     headers: {
@@ -53,7 +54,8 @@ const Projects = ({projects, setProjects, projectId, summary, status, projectMat
     body: JSON.stringify( newProject )
   })
     .then(response => {
-      if (response.accepted) {
+      
+      if (response.status === 202) {
         response.json().then(data => {
           // console.log(data)
           const index = projects.findIndex(project => project.id === data.id)
@@ -88,6 +90,7 @@ const Projects = ({projects, setProjects, projectId, summary, status, projectMat
     <Form onSubmit={handleSubmit}>
     <div class="card">
     <Button type="submit" >Save Project</Button>
+      
           <Form.Control
             name="summary"
             type="text"
