@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
     end
 
     def create
-        new_project = Project.create!(project_params)
+        new_project = @user.pending_projects.create!(project_params)
         render json: new_project, status: :created
     end
 
@@ -33,6 +33,6 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-        params.permit(:summary)
+        params.permit(:summary, :status)
     end
 end

@@ -1,6 +1,16 @@
 class ProjectMaterialsController < ApplicationController
     before_action :find_project_material, only: [:update, :destroy]
 
+    def index
+        projects = ProjectMaterial.all
+        render json: projects, status: :ok
+    end
+
+    def create
+        new_project = ProjectMaterial.create!(project_params)
+        render json: new_project, status: :created
+    end
+
     def update
         @project_material.update!(project_materials_params)
         render json: @project_material, status: 202
