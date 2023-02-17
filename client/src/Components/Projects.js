@@ -1,16 +1,25 @@
 
 import Button from "react-bootstrap/esm/Button"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Form from "react-bootstrap/Form";
+import ProjectMaterials from "./ProjectMaterials";
 
-const Projects = ({projects, setProjects, projectId, summary, status, projectMaterials}) => {
+
+const Projects = ({projects, setProjects, projectId, summary, status, projectMaterials, materials, totalCost}) => {
 
  const [ isFlipped, setIsFlipped] = useState(true)
  const [ summaryInput, setSummaryInput] = useState(summary)
 
- 
- const materialsList = projectMaterials.map(project => [project.id, project.cost])
-//  console.log(materialsList)
+                        //materials.map
+ const materialsList = projectMaterials.map((projectMaterial) =>(
+    <ProjectMaterials
+    key={projectMaterial.id}
+    quantity={projectMaterial.quantity}
+    cost={projectMaterial.cost}
+    name={projectMaterial.name}
+    ></ProjectMaterials>
+ ))
+
 
   const handleChange = (e) => {
    
@@ -29,6 +38,7 @@ const Projects = ({projects, setProjects, projectId, summary, status, projectMat
 
   }
 
+ 
   const handleDelete = () => {
     // Simple DELETE request with fetch
     fetch(`/projects/${projectId}`, { method: 'DELETE' })
@@ -69,6 +79,8 @@ const Projects = ({projects, setProjects, projectId, summary, status, projectMat
     flip()
 
   }
+
+
   
   return(
     
@@ -79,8 +91,9 @@ const Projects = ({projects, setProjects, projectId, summary, status, projectMat
 
        <h2 class="card-header">{summary}</h2>
        <div class="card-body">{status}
-       <p class="card-text">{materialsList}</p>
+       <p class="card-text">Total Project Cost: ${totalCost}</p>
        </div>
+       {materialsList}
    </div> 
 
    :(

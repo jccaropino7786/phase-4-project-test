@@ -45,17 +45,18 @@ const App = () => {
      if (currentUser)
     {fetchData() } 
   },[currentUser])
-
-  const filteredProjects =  currentUser ? projects.filter(project => project.user.id === currentUser.id) : [] 
+console.log(projects)
+  const filteredProjects =  currentUser ? projects.filter(project => project.user.id === currentUser.id) : ["No Projects Yet" ]
 
   const projectList = filteredProjects.map((project) => (
     <Projects
     key={project.id}
     projectId={project.id} 
     summary={project.summary}
+    totalCost={project.total_cost}
     projectMaterials={project.project_materials}
+    materials={project.materials}
     status={project.status}
-    projects={filteredProjects} 
     setProjects={setProjects}
     ></Projects>
   ))
@@ -91,7 +92,7 @@ const App = () => {
             <Route path="/signup" element={ <SignUp setCurrentUser={setCurrentUser} /> }/> */}
             <Route path="/projects" element={ projectList }/>
             <Route path="/new_project" element={ <ProjectForm setProjects={setProjects}/> }/>
-            <Route path="/materials" element= {<MatrialsContainer materials={materials} setMaterials={setMaterials}/> } />
+            <Route path="/materials" element= {<MatrialsContainer materials={materials} setProjects={setProjects} setMaterials={setMaterials}/> } />
           </Routes>
       </div>
     </div>

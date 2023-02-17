@@ -3,7 +3,7 @@ import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-const MatrialsContainer =({materials, setMaterials}) => {
+const MatrialsContainer =({materials, setMaterials, setProjects}) => {
 
     const [showForm, setShowForm] = useState(false)
     const [btnTxt, setBtnTxt] = useState(true)
@@ -33,6 +33,8 @@ const MatrialsContainer =({materials, setMaterials}) => {
         cost={material.cost}
         description={material.description}
         setMaterials={setMaterials}
+        setProjects={setProjects} 
+
         
         ></Materials>
       ))
