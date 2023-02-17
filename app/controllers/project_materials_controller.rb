@@ -29,6 +29,6 @@ class ProjectMaterialsController < ApplicationController
     end
 
     def find_project_material
-        @project_material = Project.find(params[:id])
+        @project_material = ProjectMaterial.find(params[:id])
     end
 end

@@ -7,6 +7,7 @@ import LogIn from './Components/LogIn';
 import { useEffect, useState } from 'react';
 import Projects from './Components/Projects';
 import Materials from './Components/Materials';
+import MatrialsContainer from './Components/MaterialContainer';
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null)
@@ -73,15 +74,7 @@ const App = () => {
     {fetchData() } 
   },[currentUser])
 
-      const materialList = materials.map((material) => (
-        <Materials
-        key={material.id} 
-        name={material.name}
-        cost={material.cost}
-        description={material.description}
-        
-        ></Materials>
-      ))
+      
  
 
 
@@ -98,7 +91,7 @@ const App = () => {
             <Route path="/signup" element={ <SignUp setCurrentUser={setCurrentUser} /> }/> */}
             <Route path="/projects" element={ projectList }/>
             <Route path="/new_project" element={ <ProjectForm setProjects={setProjects}/> }/>
-            <Route path="/materials" element={ materialList }/>
+            <Route path="/materials" element= {<MatrialsContainer materials={materials} setMaterials={setMaterials}/> } />
           </Routes>
       </div>
     </div>
