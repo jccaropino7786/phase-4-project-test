@@ -3,7 +3,7 @@ import Button from "react-bootstrap/esm/Button"
 
 
 
-const Materials  = ({name, cost, description, setMaterials, materialId, setProjects}) => {
+const Materials  = ({name, cost, description, setMaterialNames, materialId, setProjects}) => {
 
 
     const updateProject = () => {
@@ -14,7 +14,7 @@ const Materials  = ({name, cost, description, setMaterials, materialId, setProje
         // Simple DELETE request with fetch
         fetch(`/materials/${materialId}`, { method: 'DELETE' })
             .then(() => { 
-                    setMaterials(currentMaterials => currentMaterials.filter(material => material.id !== materialId)) 
+                    setMaterialNames(currentMaterials => currentMaterials.filter(material => material.id !== materialId)) 
                     setProjects(current => current.map( p => ({...p, project_materials: p.project_materials.filter( pm => pm.name !== name ), total_cost: p.project_materials.filter( pm => pm.name !== name ).reduce((total, pm )=> total + pm.quantity * pm.cost, 0) } ))) 
                 }
             )

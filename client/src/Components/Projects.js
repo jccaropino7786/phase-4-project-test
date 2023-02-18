@@ -7,7 +7,8 @@ import ProjectMaterials from "./ProjectMaterials";
 
 const Projects = ({projects, setProjects, projectId, summary, status, projectMaterials, totalCost, materials}) => {
 
-console.log(materials)
+// console.log(materials)
+// console.log(projectMaterials)
 
  const [ isFlipped, setIsFlipped] = useState(true)
  const [ summaryInput, setSummaryInput] = useState(summary)

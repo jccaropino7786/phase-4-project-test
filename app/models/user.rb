@@ -4,8 +4,8 @@ class User < ApplicationRecord
     has_secure_password
 
     validates_presence_of :email
-    validates :email, uniqueness: true
-    validates :password, length: { minimum: 8 }, on: :create
+    validates :email, presence: true, uniqueness: true
+    validates :password, presence: true, length: { minimum: 8 }, on: :create
 
     enum role: [:client, :admin, :super_user]
 

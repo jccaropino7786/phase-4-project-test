@@ -3,7 +3,7 @@ import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-const MatrialsContainer =({materials, setMaterials, setProjects}) => {
+const MatrialsContainer =({materialNames, setMaterialNames, setProjects}) => {
 
     const [showForm, setShowForm] = useState(false)
     const [btnTxt, setBtnTxt] = useState(true)
@@ -25,14 +25,14 @@ const MatrialsContainer =({materials, setMaterials, setProjects}) => {
         return formData.name.length > 1 && formData.cost.length > 0;
     }
 
-    const materialList = materials.map((material) => (
+    const materialList = materialNames.map((material) => (
         <Materials
         key={material.id} 
         materialId={material.id}
         name={material.name}
         cost={material.cost}
         description={material.description}
-        setMaterials={setMaterials}
+        setMaterialNames={setMaterialNames}
         setProjects={setProjects} 
 
         
@@ -64,7 +64,7 @@ const MatrialsContainer =({materials, setMaterials, setProjects}) => {
             body: JSON.stringify(newMaterial),
         })
         .then(response => response.json())
-        .then(newData => setMaterials(currentMaterials => [ newData, ...currentMaterials ]))
+        .then(newData => setMaterialNames(currentMaterials => [ newData, ...currentMaterials ]))
 
         setFormData(initialFormValues);
     }
