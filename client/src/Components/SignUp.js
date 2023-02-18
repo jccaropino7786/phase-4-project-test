@@ -10,7 +10,7 @@ function SignUp({setCurrentUser, setLogin}){
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     // const [login, setLogin] = useState("")
-    const [errors, setErrors] = useState([])
+    
 
     function validateForm() {
         return email.length > 0 && password.length > 0;
@@ -31,9 +31,10 @@ function SignUp({setCurrentUser, setLogin}){
     .then(res => {
         if(res.ok){
           res.json().then(user => setCurrentUser(user))
-        } else{
-            res.json().then( errors => setErrors(errors))
-        }
+        } 
+        //   else{
+        //     res.json().then( errors => setErrors(errors))
+        // }
     })
     navigate("/projects")
 }

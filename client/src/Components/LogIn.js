@@ -8,7 +8,7 @@ function LogIn({setCurrentUser, setLogin}){
     const navigate = useNavigate();
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [errors, setErrors] = useState([])
+    
 
     function validateForm() {
         return email.length > 0 && password.length > 0;
@@ -31,9 +31,10 @@ function LogIn({setCurrentUser, setLogin}){
             res.json().then(user => 
               { setCurrentUser(user)
                 navigate("/projects")})
-        } else{
-            res.json().then( errors => setErrors(errors))
-        }
+        } 
+        //   else{
+        //     res.json().then( errors => setErrors(errors))
+        // }
     })
     
 }

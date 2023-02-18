@@ -1,4 +1,4 @@
-import Card from "react-bootstrap/Card"
+
 
 const ProjectMaterials = ({quantity, cost, name}) => {
 
@@ -6,11 +6,11 @@ const ProjectMaterials = ({quantity, cost, name}) => {
 
     return(
         <>
-        <div class="card">
-        <ul class="mats">
-            <li class="matsI">Material: {name}</li>
-            <li class="matsI">Cost: ${cost}</li>
-            <li class="matsI">Quantity: {quantity}</li>
+        <div className="card">
+        <ul className="mats">
+            <li className="matsI">Material: {name}</li>
+            <li className="matsI">Cost: ${cost}</li>
+            <li className="matsI">Quantity: {quantity}</li>
         </ul>
         </div>
         

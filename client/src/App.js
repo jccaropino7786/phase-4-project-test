@@ -6,13 +6,14 @@ import SignUp from './Components/SignUp';
 import LogIn from './Components/LogIn';
 import { useEffect, useState } from 'react';
 import Projects from './Components/Projects';
-import Materials from './Components/Materials';
+
 import MatrialsContainer from './Components/MaterialContainer';
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null)
   const [projects, setProjects] = useState([])
   const [materials, setMaterials] = useState([])
+  const [errors, setErrors] = useState([])
   const [login, setLogin] = useState(true)
 
   useEffect(() => {
@@ -45,7 +46,8 @@ const App = () => {
      if (currentUser)
     {fetchData() } 
   },[currentUser])
-console.log(projects)
+
+
   const filteredProjects =  currentUser ? projects.filter(project => project.user.id === currentUser.id) : ["No Projects Yet" ]
 
   const projectList = filteredProjects.map((project) => (
@@ -57,6 +59,7 @@ console.log(projects)
     projectMaterials={project.project_materials}
     materials={project.materials}
     status={project.status}
+    projects={projects}
     setProjects={setProjects}
     ></Projects>
   ))

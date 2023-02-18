@@ -1,16 +1,18 @@
 
 import Button from "react-bootstrap/esm/Button"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Form from "react-bootstrap/Form";
 import ProjectMaterials from "./ProjectMaterials";
 
 
-const Projects = ({projects, setProjects, projectId, summary, status, projectMaterials, materials, totalCost}) => {
+const Projects = ({projects, setProjects, projectId, summary, status, projectMaterials, totalCost, materials}) => {
+
+console.log(materials)
 
  const [ isFlipped, setIsFlipped] = useState(true)
  const [ summaryInput, setSummaryInput] = useState(summary)
 
-                        //materials.map
+                        
  const materialsList = projectMaterials.map((projectMaterial) =>(
     <ProjectMaterials
     key={projectMaterial.id}
