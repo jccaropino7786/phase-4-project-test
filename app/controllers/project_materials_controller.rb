@@ -24,7 +24,7 @@ class ProjectMaterialsController < ApplicationController
 
     private
 
-    def project_materials_params
+    def project_material_params
         params.permit(:quantity, :material_id, :project_id)
     end
 

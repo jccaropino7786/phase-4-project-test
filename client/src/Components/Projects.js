@@ -99,7 +99,7 @@ const Projects = ({singleProject, projects, setProjects, projectId, summary, sta
    const handleAddMaterialToProject = (e) => {
         e.preventDefault()
 
-        const addMaterial = {
+        const addProjectMaterial = {
           quantity: quantityInput,
           material_id: materialInput,
           project_id: projectId
@@ -112,7 +112,7 @@ const Projects = ({singleProject, projects, setProjects, projectId, summary, sta
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(addMaterial),
+        body: JSON.stringify(addProjectMaterial),
     })
     .then(response => response.json())
     .then(newData => console.log(newData))
