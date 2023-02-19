@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import ProjectMaterials from "./ProjectMaterials";
 
 
-const Projects = ({singleProject, projects, setProjects, projectId, summary, status, projectMaterials, totalCost, materials, materialNames, setMaterialNames}) => {
+const Projects = ({projects, setProjects, projectId, summary, status, projectMaterials, totalCost, materials, materialNames, setMaterialNames}) => {
 
 // console.log(materialNames.map(MN => MN.name))
 // console.log(materials)
@@ -115,7 +115,8 @@ const Projects = ({singleProject, projects, setProjects, projectId, summary, sta
         body: JSON.stringify(addProjectMaterial),
     })
     .then(response => response.json())
-    .then(newData => console.log(newData))
+    .then(newData => 
+      console.log(newData))
       // setProjects(currentMaterials => [ newData, ...currentMaterials ]))
 
   }
@@ -136,6 +137,7 @@ const Projects = ({singleProject, projects, setProjects, projectId, summary, sta
         <Form onSubmit={handleAddMaterialToProject}>
           <Form.Select onChange = {(e) => 
             setMaterialInput(e.target.value)}>
+            <option value="select">Select Material to Add</option>
             {dropDownOptions}           
           </Form.Select>
           <Form.Control

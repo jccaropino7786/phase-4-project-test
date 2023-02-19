@@ -7,5 +7,7 @@ class ProjectMaterial < ApplicationRecord
   validates :material_id, presence: true
   validates :project_id, presence: true
   
+  
+  
 end
 
