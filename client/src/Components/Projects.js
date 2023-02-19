@@ -5,13 +5,16 @@ import Form from "react-bootstrap/Form";
 import ProjectMaterials from "./ProjectMaterials";
 
 
-const Projects = ({projects, setProjects, projectId, summary, status, projectMaterials, totalCost, materials}) => {
+const Projects = ({singleProject, projects, setProjects, projectId, summary, status, projectMaterials, totalCost, materials, materialNames, setMaterialNames}) => {
 
+// console.log(materialNames.map(MN => MN.name))
 // console.log(materials)
-// console.log(projectMaterials)
+
 
  const [ isFlipped, setIsFlipped] = useState(true)
  const [ summaryInput, setSummaryInput] = useState(summary)
+ const [quantityInput, setQuantityInput] = useState("")
+ const [materialInput, setMaterialInput] = useState("")
 
                         
  const materialsList = projectMaterials.map((projectMaterial) =>(
@@ -84,19 +87,69 @@ const Projects = ({projects, setProjects, projectId, summary, status, projectMat
   }
 
 
-  
+  const  dropDownOptions = materialNames.length > 0 && materialNames.map((materialName) => (
+    <option 
+    key={materialName.id} 
+    value={materialName.id} 
+    >
+      {materialName.name} 
+    </option>
+    ));
+
+   const handleAddMaterialToProject = (e) => {
+        e.preventDefault()
+
+        const addMaterial = {
+          quantity: quantityInput,
+          material_id: materialInput,
+          project_id: projectId
+      }
+
+      // console.log(addMaterial)
+
+      fetch("/project_materials", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(addMaterial),
+    })
+    .then(response => response.json())
+    .then(newData => console.log(newData))
+      // setProjects(currentMaterials => [ newData, ...currentMaterials ]))
+
+  }
+   
   return(
     
     <>
     {isFlipped ? 
-    <div class="card">
+    <div className="card">
         <Button onClick={flip}>Edit Project</Button>
 
-       <h2 class="card-header">{summary}</h2>
-       <div class="card-body">{status}
-       <p class="card-text">Total Project Cost: ${totalCost}</p>
+       <h2 className="card-header">{summary}</h2>
+       <div className="card-body">{status}
+       <p className="card-text">Total Project Cost: ${totalCost}</p>
        </div>
+
+
+        <Form onSubmit={handleAddMaterialToProject}>
+          <Form.Select onChange = {(e) => 
+            setMaterialInput(e.target.value)}>
+            {dropDownOptions}           
+          </Form.Select>
+          <Form.Control
+            name="quantity"
+            type="number"
+            value={quantityInput}
+            onChange={(e) => setQuantityInput(e.target.value)}
+          />
+          <Button type="submit" >Add Material</Button>
+        </Form>
+
+      <div>
        {materialsList}
+      </div>
    </div> 
 
    :(

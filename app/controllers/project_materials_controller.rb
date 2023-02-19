@@ -7,8 +7,8 @@ class ProjectMaterialsController < ApplicationController
     end
 
     def create
-        new_project = ProjectMaterial.create!(project_params)
-        render json: new_project, status: :created
+        new_project_material = ProjectMaterial.create!(project_material_params)
+        render json: new_project_material, status: :created
     end
 
     def update
@@ -25,7 +25,7 @@ class ProjectMaterialsController < ApplicationController
     private
 
     def project_materials_params
-        params.permit(:quantity)
+        params.permit(:quantity, :material_id, :project_id)
     end
 
     def find_project_material

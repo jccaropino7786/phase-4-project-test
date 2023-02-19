@@ -53,6 +53,7 @@ const App = () => {
   const projectList = filteredProjects.map((project) => (
     <Projects
     key={project.id}
+    singleProject={project}
     projectId={project.id} 
     summary={project.summary}
     totalCost={project.total_cost}
@@ -61,6 +62,8 @@ const App = () => {
     status={project.status}
     projects={projects}
     setProjects={setProjects}
+    materialNames={materialNames}
+    setMaterialNames={setMaterialNames}
     ></Projects>
   ))
 
