@@ -1,6 +1,6 @@
 
 import Button from "react-bootstrap/esm/Button"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Form from "react-bootstrap/Form";
 import ProjectMaterials from "./ProjectMaterials";
 
@@ -15,8 +15,22 @@ const Projects = ({projects, setProjects, projectId, summary, status, projectMat
  const [ summaryInput, setSummaryInput] = useState(summary)
  const [quantityInput, setQuantityInput] = useState("")
  const [materialInput, setMaterialInput] = useState("")
+ const [projectMats, setProjectMats] = useState ([])
 
-                        
+ useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const resp = await fetch("/project_materials")
+      const projectMatList = await resp.json()
+      setProjectMats(projectMatList)
+    } catch (error) {
+      alert(error)
+    }
+   }
+
+  fetchData()  
+},[])
+                      
  const materialsList = projectMaterials.map((projectMaterial) =>(
     <ProjectMaterials
     key={projectMaterial.id}
@@ -25,7 +39,6 @@ const Projects = ({projects, setProjects, projectId, summary, status, projectMat
     name={projectMaterial.name}
     ></ProjectMaterials>
  ))
-
 
   const handleChange = (e) => {
    
@@ -41,15 +54,13 @@ const Projects = ({projects, setProjects, projectId, summary, status, projectMat
       .then(response => response.json())
       .then(data => console.log(data))
       .catch(error => console.error(error));
-
   }
 
- 
   const handleDelete = () => {
     // Simple DELETE request with fetch
     fetch(`/projects/${projectId}`, { method: 'DELETE' })
         .then(() => setProjects(currentProjects => currentProjects.filter(project => project.id !== projectId)))
-}
+  }
 
   const flip = () => {
     setIsFlipped(currentValue => !currentValue)
@@ -96,7 +107,7 @@ const Projects = ({projects, setProjects, projectId, summary, status, projectMat
     </option>
     ));
 
-   const handleAddMaterialToProject = (e) => {
+  const handleAddMaterialToProject = (e) => {
         e.preventDefault()
 
         const addProjectMaterial = {
@@ -104,9 +115,6 @@ const Projects = ({projects, setProjects, projectId, summary, status, projectMat
           material_id: materialInput,
           project_id: projectId
       }
-
-      // console.log(addMaterial)
-
       fetch("/project_materials", {
         method: 'POST',
         headers: {
@@ -115,12 +123,17 @@ const Projects = ({projects, setProjects, projectId, summary, status, projectMat
         body: JSON.stringify(addProjectMaterial),
     })
     .then(response => response.json())
-    .then(newData => 
-      console.log(newData))
-      // setProjects(currentMaterials => [ newData, ...currentMaterials ]))
+    .then(newPM => 
+    
+      setProjects( cps => cps.map( cp => ( cp.id !== newPM.project.id ?  cp :  {...cp, total_cost: calcTotalCost([...cp.project_materials, newPM]),project_materials: [...cp.project_materials, newPM]})))
 
+      
+    )
   }
    
+    const calcTotalCost = (array) => array.reduce((total, pm )=> total + pm.quantity * pm.cost, 0)
+
+
   return(
     
     <>
