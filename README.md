@@ -1,4 +1,47 @@
-# Project Template: React/Rails API
+# Welcome to the Cost Forcast Project!
+
+> To view in VSCode, right click on the README.md file and select "Open Preview".
+
+## Setup
+
+This project was started using a monolithic repo from flatiron school.  There are complete setup actions down at the 2nd part of this readme. 
+
+This Project uses React Frontend and Rails Backend.
+
+## Project Cost Projector
+
+This is a project cost analizer to keep track of project costs of different projects.  can be used as a forcaster.
+
+### Functionality
+This project has A user authentication page,  You can create materials, You can destroy materials,  you can create and destory projects.  You can add project materials to your project at this time. Delete function Will come.   
+This Project has some light use with serializers and has some complicated state updates.   
+
+
+
+was created by Flatiron School student JC Caropino for their Phase-4 project assignment.
+
+## License
+
+MIT License
+Copyright (c) 2023 jccaropino7786
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+# Part 2.   Project Template: React/Rails API
 
 ## Description
 
