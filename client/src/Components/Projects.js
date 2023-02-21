@@ -126,8 +126,6 @@ const Projects = ({projects, setProjects, projectId, summary, status, projectMat
     .then(newPM => 
     
       setProjects( cps => cps.map( cp => ( cp.id !== newPM.project.id ?  cp :  {...cp, total_cost: calcTotalCost([...cp.project_materials, newPM]),project_materials: [...cp.project_materials, newPM]})))
-
-      
     )
   }
    

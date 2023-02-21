@@ -4,7 +4,24 @@
 
 ## Setup
 
-This project was started using a monolithic repo from flatiron school.  There are complete setup actions down at the 2nd part of this readme. 
+This project was started using a monolithic repo from flatiron school. 
+
+Start by **cloning** (not forking) the project template repository and removing
+the remote:
+
+```console
+$ git clone git@github.com:jccaropino7786/phase-4-project-test.git
+$ cd your-project-name
+$ git remote rm origin
+```
+
+When you're ready to start building your project, run:
+
+```sh
+bundle install
+rails db:create
+npm install --prefix client
+```
 
 This Project uses React Frontend and Rails Backend.
 
@@ -19,6 +36,11 @@ This Project has some light use with serializers and has some complicated state 
 
 
 was created by Flatiron School student JC Caropino for their Phase-4 project assignment.
+
+## Contributions
+
+All contributions are welcome
+
 
 ## License
 
