@@ -10,10 +10,11 @@ This Project uses React Frontend and Rails Backend.
 
 ## Project Cost Projector
 
-this is a project cost analizer to keep track of project costs of different projects.  can be used as a forcaster.
+This is a project cost analizer to keep track of project costs of different projects.  can be used as a forcaster.
 
-
-When users of this application initially open the website they are greeted with a serene, welcoming homepage with all 12 zodiac signs listed to the left of the screen. Users can then scroll down to their zodiac and click on it to expand the information on the screen before mobing onto journaling. The links on the top left of the screen are used to navigate throughout the application to return to return to the home screen, move onto journaling, or view their own user-created journal entries.
+### Functionality
+This project has A user authentication page,  You can create materials, You can destroy materials,  you can create and destory projects.  You can add project materials to your project at this time. Delete function Will come.   
+This Project has some light use with serializers and has some complicated state updates.   
 
 
 
